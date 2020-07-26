@@ -1,0 +1,22 @@
+import plugins.Plugin;
+import plugins.PluginContext;
+import plugins.PluginInfo;
+
+class MyPlugin extends Plugin {
+    public override function pluginInfo():PluginInfo {
+        var info = new PluginInfo();
+        info.name = "my-plugin";
+        info.description = "this is my super plugin";
+        return info;
+    }
+    
+    public override function beforeStart() {
+        super.beforeStart();
+        trace("MyPlugin::beforeStart");
+    }
+    
+    public override function start(context:PluginContext) {
+        trace("MyPlugin::start::id" + pluginId + " - " + context.someImportantVar);
+        context.someImportantVar = 888;
+    }
+}

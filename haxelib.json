@@ -1,0 +1,18 @@
+{
+    "version": "0.0.0",
+    "contributors": [
+        "ianharrigan",
+        "haxeui"
+    ],
+    "dependencies": {
+    },
+    "releasenote": "",
+    "tags": [
+        "hscript"
+    ],
+    "license": "MIT",
+    "name": "hscript-ex",
+    "description": "hscript extended",
+    "classPath": "src",
+    "url": "https://github.com/ianharrigan/hscript-ex"
+}

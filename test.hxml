@@ -1,0 +1,17 @@
+-main test.TestMain
+-lib munit
+-lib hamcrest
+-lib hscript
+-cp src
+-cp test
+-dce no
+
+--macro include("test.classes")
+
+-neko bin/neko_test.n
+--resource test/resources/BasicClasses.hx@BasicClasses.hx
+--resource test/resources/PassingObjectsClasses.hx@PassingObjectsClasses.hx
+--resource test/resources/InheritanceClasses.hx@InheritanceClasses.hx
+--resource test/resources/PackagedClasses1.hx@PackagedClasses1.hx
+--resource test/resources/PackagedClasses2.hx@PackagedClasses2.hx
+--cmd neko bin/neko_test.n
