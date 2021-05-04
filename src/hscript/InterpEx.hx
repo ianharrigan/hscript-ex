@@ -62,7 +62,7 @@ class InterpEx extends Interp {
         var v = expr(e2);
         switch ( Tools.expr(e1) ) {
             case EIdent(id):
-                if (_proxy.superClass != null && Reflect.hasField(_proxy.superClass, id)) {
+                if (_proxy != null && _proxy.superClass != null && Reflect.hasField(_proxy.superClass, id)) {
                     Reflect.setProperty(_proxy.superClass, id, v);
                     return v;
                 }
@@ -72,7 +72,7 @@ class InterpEx extends Interp {
     }
     
 	override function fcall( o : Dynamic, f : String, args : Array<Dynamic> ) : Dynamic {
-        if (Std.is(o, ScriptClass)) {
+        if ((o is ScriptClass)) {
             _nextCallObject = null;
             var proxy:ScriptClass = cast(o, ScriptClass);
             return proxy.callFunction(f, args);
@@ -92,7 +92,7 @@ class InterpEx extends Interp {
     
     override function get( o : Dynamic, f : String ) : Dynamic {
         if ( o == null ) error(EInvalidAccess(f));
-        if (Std.is(o, ScriptClass)) {
+        if ((o is ScriptClass)) {
             var proxy:AbstractScriptClass = cast(o, ScriptClass);
             if (proxy._interp.variables.exists(f)) {
                 return proxy._interp.variables.get(f);
@@ -110,7 +110,7 @@ class InterpEx extends Interp {
     
     override function set( o : Dynamic, f : String, v : Dynamic ) : Dynamic {
         if ( o == null ) error(EInvalidAccess(f));
-        if (Std.is(o, ScriptClass)) {
+        if ((o is ScriptClass)) {
             var proxy:ScriptClass = cast(o, ScriptClass);
             if (proxy._interp.variables.exists(f)) {
                 proxy._interp.variables.set(f, v);

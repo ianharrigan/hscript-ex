@@ -128,7 +128,7 @@ class ScriptClass {
         } else {
             var fixedArgs = [];
             for (a in args) {
-                if (Std.is(a, ScriptClass)) {
+                if ((a is ScriptClass)) {
                     fixedArgs.push(cast(a, ScriptClass).superClass);
                 } else {
                     fixedArgs.push(a);

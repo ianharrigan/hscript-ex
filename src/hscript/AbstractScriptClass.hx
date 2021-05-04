@@ -45,7 +45,7 @@ abstract AbstractScriptClass(ScriptClass) from ScriptClass {
                     return Reflect.getProperty(this.superClass, name);
                 } else if (Reflect.hasField(this.superClass, name)) {
                     return Reflect.field(this.superClass, name);
-                } else if (this.superClass != null && Std.is(this.superClass, ScriptClass)) {
+                } else if (this.superClass != null && (this.superClass is ScriptClass)) {
                     var superScriptClass:AbstractScriptClass = cast(this.superClass, ScriptClass);
                     try {
                         return superScriptClass.fieldRead(name);
@@ -73,7 +73,7 @@ abstract AbstractScriptClass(ScriptClass) from ScriptClass {
                 } else if (Reflect.hasField(this.superClass, name)) {
                     Reflect.setProperty(this.superClass, name, value);
                     return value;
-                } else if (this.superClass != null && Std.is(this.superClass, ScriptClass)) {
+                } else if (this.superClass != null && (this.superClass is ScriptClass)) {
                     var superScriptClass:AbstractScriptClass = cast(this.superClass, ScriptClass);
                     try {
                         return superScriptClass.fieldWrite(name, value);
